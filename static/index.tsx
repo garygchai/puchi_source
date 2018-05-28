@@ -461,3 +461,4 @@ class EnterBox extends React.Component<any, any> {
   }
 }
 ReactDom.render(<ContentBox />, document.getElementById('app'))
+// export default ContentBox
