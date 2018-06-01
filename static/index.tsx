@@ -75,6 +75,7 @@ function showNum (num: number) {
 import * as React from 'react'
 import * as ReactDom from 'react-dom'
 import axios from 'axios'
+import { relative } from 'path';
 
 interface IAvatarProps {
   userInfo: {
@@ -99,7 +100,8 @@ interface IImageProps {
   imgList: Array<{
     url: string
   }>,
-  visible: boolean
+  visible: boolean,
+  link: string
 }
 
 interface ICommentProps {
@@ -130,6 +132,7 @@ class ContentBox extends React.Component<any, any> {
         width: 0,
         height: 0
       },
+      jumpUrl: '',
       vedioUrl: '',
       imgs: {
         imgList: [] as any
@@ -200,6 +203,7 @@ class ContentBox extends React.Component<any, any> {
           <ImageBox
             visible={!this.state.titterInfo.vedioUrl}
             imgList={this.state.titterInfo.imgs && this.state.titterInfo.imgs.imgList}
+            link={this.state.titterInfo.jumpUrl}
           />
           <PersonBox
             content={this.state.titterInfo.content}
@@ -295,9 +299,18 @@ class ImageBox extends React.Component<IImageProps, any> {
     return (
       <div className="image-box" style={{display: this.props.visible ? 'block' : 'none'}}>
         {
-          this.props.imgList && this.props.imgList.map(item => {
+          this.props.imgList && this.props.imgList.map((item, index) => {
+            let jumpEl:any
+            if (index === 0 && this.props.link) {
+              jumpEl = (
+                <a className='jump' href={this.props.link}></a>
+              )
+            }
             return (
-              <img key={item.url} src={item.url}/>
+              <div style={{position: 'relative'}}>
+                {jumpEl}
+                <img key={item.url} src={item.url}/>
+              </div>
             )
           })
         }
@@ -320,6 +333,11 @@ class PersonBox extends React.Component<any, any> {
       this.setState({
         content: this.props.content.slice(0, 264).concat('...'),
         showMore: true
+      })
+    } else {
+      this.setState({
+        content: this.props.content,
+        showMore: false
       })
     }
   }
