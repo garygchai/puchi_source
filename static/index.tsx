@@ -144,9 +144,9 @@ class ContentBox extends React.Component<any, any> {
     
   }
   async componentWillMount() {
-    let titterId = 0
-    if (window.location.search.match(/titterId=(\d+)/)) {
-      titterId = parseInt(window.location.search.match(/titterId=(\d+)/)[1])
+    let titterId = ''
+    if (window.location.search.match(/titterId=(\w+)/)) {
+      titterId = window.location.search.match(/titterId=(\w+)/)[1]
     }
     const http = axios.create({
       headers: {

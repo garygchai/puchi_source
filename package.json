@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server -w",
     "build": "rm ./public/static/share/index.* && webpack --config ./webpack.config.prod.js"
   },
   "dependencies": {

@@ -24,9 +24,9 @@ const options = {
 const compiler = webpack(config);
 const devServer = new webpackDevServer(compiler, options);
 
-devServer.listen(8080, 'localhost', () => {
-  console.log('dev server listening on port 8080');
-});
+// devServer.listen(8080, 'localhost', () => {
+//   console.log('dev server listening on port 8080');
+// });
 
 /**
  * Get port from environment and store in Express.
