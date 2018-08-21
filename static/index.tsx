@@ -122,6 +122,11 @@ class ContentBox extends React.Component<any, any> {
         headImg: '',
         nickname: ''
       },
+      isAnonymous: 0,
+      anonymousPlayer: {
+        headImg: '',
+        nickname: ''
+      }, 
       location: '',
       content: '',
       likeCount: '',
@@ -191,7 +196,7 @@ class ContentBox extends React.Component<any, any> {
         />
         <div style={{display: !this.state.loading && !this.state.hidding ? 'block' : 'none'}}>
           <AvatarBox
-            userInfo={this.state.titterInfo.playerBase}
+            userInfo={this.state.titterInfo.isAnonymous ? this.state.titterInfo.anonymousPlayer : this.state.titterInfo.playerBase}
             location={this.state.titterInfo.location}
             pubTime={this.state.titterInfo.pubTime}
           />

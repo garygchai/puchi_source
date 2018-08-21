@@ -46,6 +46,11 @@ router.post('/json/v1/h5/get_titter_info', function (req, res, next) {
         "isAnonymous": 0,
         "signature": "叼不叼"
       },
+      "anonymousPlayer": {
+        "headImg": "http://sz1.img.tech-chance.com/anonymous/head/tumenglisb_1.png",
+        "nickname": "仙宇小可爱"
+       },
+      "isAnonymous": 1,
       "likeCount": 50,
       "location": "中国-香港",
       "titterId": 1000140,
