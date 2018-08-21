@@ -109,7 +109,9 @@ interface ICommentProps {
     commentId: number,
     pubTime: number,
     content: '',
-    playerBase: any
+    playerBase: any,
+    isAnonymous: number,
+    anonymousPlayer: any
   }>
 }
 
@@ -381,11 +383,11 @@ class CommentBox extends React.Component<ICommentProps, any> {
             this.props.commentList && this.props.commentList.slice(0, 5).map(item => {
               return (
                 <li key={item.commentId}>
-                  <img className="avatar" src={item.playerBase.headImg} />
+                  <img className="avatar" src={item.isAnonymous ? item.anonymousPlayer.headImg : item.playerBase.headImg} />
                   <div className="comment">
                     <p className="time">{showTime(item.pubTime)}</p>
                     <div className="content">
-                      <p className="nick">{`${item.playerBase.nickname}：`}</p>
+                      <p className="nick">{`${item.isAnonymous ? item.anonymousPlayer.nickname : item.playerBase.nickname}：`}</p>
                       <span className="text">{item.content}</span>
                     </div>
                   </div>
